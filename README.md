@@ -9,17 +9,21 @@ Developers can access the content via a graphQL API to build all kind of website
 
 ## Installation
 
-With a single united CMS installation you can manage multiple separated units called *"Organizations"* that do not 
+With a single united CMS installation you can manage multiple separated units called *"Organizations"* which don't 
 share any information with each other. 
 
-At the moment united CMS is based on the Symfony 3.3 and  only requires PHP >= 7.1 and a MySQL >= 5.7.9 database.
+At the moment united CMS is based on the Symfony 4.0 and  only requires PHP >= 7.1 and a MySQL >= 5.7.9 database.
 
-After cloning the repository execute: 
+### Start a new project 
 
-    composer install  
+    composer create-project united-cms/standard u --stability dev
     
-    bin/console doctrine schema:update --force
+    bin/console assets:install --symlink
     
+    # Now set database configuration using environment variables or .env file 
+    
+    bin/console doctrine:schema:update --force
+
 To get started create your first organization and a platform admin user:
 
     bin/console united:organization:create
@@ -32,12 +36,14 @@ If you want to use the PHP development server execute:
 
 To run united content in production mode, execute:
 
-    bin/console doctrine schema:update --force --env=prod
-    bin/console doctrine schema:update cache:clear --no-warmup --env=prod    
+    bin/console assets:install
+    bin/console doctrine:schema:update --force --env=prod
+    bin/console cache:clear --env=prod    
 
 ## Testing
 
-united CMS uses unit and functional tests using PHPUnit. To run all tests just execute: 
+united CMS and all it's bundles uses unit and functional tests by using the PHPUnit framework. To run integration tests, 
+execute: 
 
     phpunit
     
@@ -47,6 +53,7 @@ can get a much faster response if you run this group at the end.
     phpunit --exclude-group slow
     phpunit --group slow 
 
+Tests for each bundle can be executed from the root directory of each united CMS core bundle.
 
 ## Architecture
 
