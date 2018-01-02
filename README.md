@@ -1,0 +1,133 @@
+united CMS
+==========
+
+united CMS is a content management platform that allows you to manage all kind of content in a datacentred way by using 
+an intuitv and simple Userinterface.
+
+Developers can access the content via a graphQL API to build all kind of websites, apps or IoT applications.   
+
+
+## Installation
+
+With a single united CMS installation you can manage multiple separated units called *"Organizations"* that do not 
+share any information with each other. 
+
+At the moment united CMS is based on the Symfony 3.3 and  only requires PHP >= 7.1 and a MySQL >= 5.7.9 database.
+
+After cloning the repository execute: 
+
+    composer install  
+    
+    bin/console doctrine schema:update --force
+    
+To get started create your first organization and a platform admin user:
+
+    bin/console united:organization:create
+    
+    bin/console united:user:create 
+    
+If you want to use the PHP development server execute: 
+
+    bin/console serve:run
+
+To run united content in production mode, execute:
+
+    bin/console doctrine schema:update --force --env=prod
+    bin/console doctrine schema:update cache:clear --no-warmup --env=prod    
+
+## Testing
+
+united CMS uses unit and functional tests using PHPUnit. To run all tests just execute: 
+
+    phpunit
+    
+in the root dir. Slow tests, that simulate HTTP requests for example are grouped in the "*slow*" group. Therefore you 
+can get a much faster response if you run this group at the end.
+
+    phpunit --exclude-group slow
+    phpunit --group slow 
+
+
+## Architecture
+
+united CMS is divided into organizations. This organizations do not share any information and 
+allow different groups (for example different agencies) to use the same installation for managing their content.
+
+Each organization can have members and domains. Organization members can be invited into a domain, Different domains in 
+the same organization do not share any information. One domain contains all data of a single unit (like a company). A 
+domain defines all of its permissions and content structure with a single JSON file.
+
+### Defining content structure
+
+All data within a domain can be structured by defining *"ContentTypes"* and *"SettingTypes"*. ContentTypes allow you to 
+create and store multiple content documents, while only a single Setting document is available for a SettingType.
+
+Within one ContentType there is at least one *collection*. A collection contains content documents with optional 
+collection settings (for example sorting or nesting information). Each ContentType have the **all**-collection which 
+contains all content items. This collection is a simple list by default but can be changed to any other collection 
+type.
+
+ContentTypes and SettingTypes define the fields for a single document of this type. This fields can be of different 
+types like single text field or more complex document reference fields.
+
+### FieldTypes and CollectionTypes
+
+unitedCMS includes a basic set of FieldTypes (text field, email field, etc) and CollectionTypes (list, sorted list, 
+media grid, etc) for handling common use cases. This core set will be extend over time. Furthermore, developers can 
+provide their own types by creating a Symfony bundle that includes their types: 
+
+    # MyBundle\Field\Types\MyFieldType.php 
+    namespace MyBundle\Field\Types;
+    
+    use UnitedCMS\CoreBundle\Field\FieldTypeInterface;
+    
+    MyFieldType implements FieldTypeInterface {}
+    
+    
+    
+    # MyBundle\Collection\Types\MyCollectionType.php
+    namespace MyBundle\Collection\Types;
+    
+    use UnitedCMS\CoreBundle\Collection\CollectionTypeInterface;
+    
+    MyCollectionType implements CollectionTypeInterface {}
+
+and register them as a service: 
+
+    services.yml
+    
+    services: 
+    
+        MyBundle\Field\Types\MyFieldType:
+            tags: [united_cms.field_type]    
+            
+        MyBundle\Collection\Types\MyCollectionType: 
+            tags: [united_cms.collection_type]
+
+
+### united CMS graphQL API
+To get content out of united CMS developers can consume the graphQL API at: 
+
+    https://yourdomain.com/{organization}/{domain}/api
+
+Or if you are using the subdomain-approach: 
+
+    https://{organization}.yourdomain.com/{domain}/api
+
+You can find a full API reference in the file [API.md](API.md)   
+
+### united CMS Core API
+
+Internally, united CMS is based on the Symfony Framework and provides the following services that should be used when 
+developing core or extension functionality: 
+
+* **united.cms.core_manager:** You can get the current organization and domain from this service, based on request 
+information (like the path).
+* **united.cms.field_type_manager:** You can get all registered field types from this service and validate field 
+settings and field data.
+* **united.cms.collection_type_manager:** You can get all registered collection types from this service.
+* **united.cms.domain_definition_parse:** Parses and serializes a domain object. This service is used to create a 
+domain object from the JSON definition.
+* **united.cms.fieldable_form_builder:** The fieldable form builder allows you to build content and setting forms based 
+on the defined contentType / settingType fields.  
+  
