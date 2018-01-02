@@ -27,6 +27,7 @@
         "united-cms/collection-field-bundle": "0@dev"
     },
     "require-dev": {
-        "symfony/thanks": "^1.0"
+        "symfony/thanks": "^1.0",
+        "symfony/browser-kit": "^4.0"
     }
 }

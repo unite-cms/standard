@@ -1,6 +1,9 @@
 united CMS
 ==========
 
+[![Build Status](https://travis-ci.org/united-cms/standard.svg?branch=master)](https://travis-ci.org/united-cms/standard)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/f9a5c1be2b2d9e787e68/test_coverage)](https://codeclimate.com/github/united-cms/standard/test_coverage)
+
 united CMS is a content management platform that allows you to manage all kind of content in a datacentred way by using 
 an intuitv and simple Userinterface.
 
