@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Psr\Log\LogLevel;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
@@ -89,6 +90,20 @@ class CoreBundleIntegrationTest extends DatabaseAwareTestCase
     $session->save();
     $cookie = new Cookie($session->getName(), $session->getId());
     $this->client->getCookieJar()->set($cookie);
+  }
+
+  public function testSymfonyInitializing() {
+
+    // Test initializing container.
+    $realCacheDir = $this->container->getParameter('kernel.cache_dir');
+    $this->container->get('filesystem')->remove($realCacheDir);
+    $this->container->get('kernel')->shutdown();
+    $this->container->get('kernel')->boot();
+
+
+    // Test file logging.
+    $this->assertTrue($this->container->get('test.logger')->log(LogLevel::ERROR, 'Testlog'));
+
   }
 
   public function testCoreBundleIntegration() {

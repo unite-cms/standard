@@ -31,9 +31,11 @@
         <whitelist>
             <directory>./</directory>
             <exclude>
-                <directory>./Resources</directory>
                 <directory>./Tests</directory>
                 <directory>./vendor</directory>
+                <directory>./public</directory>
+                <directory>./var</directory>
+                <directory>./bin</directory>
             </exclude>
         </whitelist>
     </filter>
