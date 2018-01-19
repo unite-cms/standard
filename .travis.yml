@@ -36,6 +36,7 @@ before_script:
       chmod +x ./cc-test-reporter
       ./cc-test-reporter before-build
     fi
+  - ./bin/console assets:install
 
 script:
   - |
