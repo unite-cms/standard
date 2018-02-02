@@ -160,7 +160,7 @@ class CoreBundleIntegrationTest extends DatabaseAwareTestCase
       'organization' => $this->organization->getIdentifier(),
       'domain' => $this->domain->getIdentifier(),
       'content_type' => $this->domain->getContentTypes()->first()->getIdentifier(),
-      'collection' => 'all',
+      'view' => 'all',
     ]));
     $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
     $this->assertGreaterThan(0, $crawler->filter('united-cms-collection-field')->count());
