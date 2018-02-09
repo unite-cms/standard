@@ -2,6 +2,7 @@
 
 return [
     UnitedCMS\CoreBundle\UnitedCMSCoreBundle::class => ['all' => true],
+
     Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
     Symfony\Bundle\SecurityBundle\SecurityBundle::class => ['all' => true],
     Symfony\Bundle\TwigBundle\TwigBundle::class => ['all' => true],
@@ -15,6 +16,7 @@ return [
     Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
 
     UnitedCMS\CollectionFieldBundle\UnitedCMSCollectionFieldBundle::class => ['all' => true],
+    UnitedCMS\StorageBundle\UnitedCMSStorageBundle::class => ['all' => true],
 
     Symfony\Bundle\DebugBundle\DebugBundle::class => ['dev' => true, 'test' => true],
     Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true],

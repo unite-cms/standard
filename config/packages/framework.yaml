@@ -28,3 +28,6 @@ framework:
             UnitedCMSCollectionFieldBundle:
                 json_manifest_path: "%kernel.project_dir%/public/bundles/unitedcmscollectionfield/manifest.json"
                 base_path: '/bundles/unitedcmscollectionfield'
+            UnitedCMSStorageBundle:
+                json_manifest_path: "%kernel.project_dir%/public/bundles/unitedcmsstorage/manifest.json"
+                base_path: '/bundles/unitedcmsstorage'

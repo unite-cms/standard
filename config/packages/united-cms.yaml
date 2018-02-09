@@ -11,6 +11,7 @@ twig:
     form_themes:
         - '@UnitedCMSCore/Form/uikit_layout.html.twig'
         - '@UnitedCMSCollectionField/Form/form_widgets.html.twig'
+        - '@UnitedCMSStorage/Form/form_widgets.html.twig'
     globals:
         united: '@united.cms.manager'
 
