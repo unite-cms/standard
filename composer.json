@@ -1,5 +1,5 @@
 {
-    "name": "united-cms/standard",
+    "name": "unite-cms/standard",
     "description": "Standard installation of united CMS",
     "type": "project",
     "authors": [
@@ -23,12 +23,20 @@
         }
     },
     "require": {
-        "united-cms/core-bundle": "0@dev",
-        "united-cms/collection-field-bundle": "0@dev",
-        "united-cms/storage-bundle": "0@dev"
+        "unite-cms/core-bundle": "0@dev",
+        "unite-cms/collection-field-bundle": "0@dev",
+        "unite-cms/storage-bundle": "0@dev"
     },
     "require-dev": {
         "symfony/thanks": "^1.0",
         "symfony/browser-kit": "^4.0"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "bin/console assets:install --symlink"
+        ],
+        "post-update-cmd": [
+            "bin/console assets:install --symlink"
+        ]
     }
 }

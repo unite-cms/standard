@@ -1,25 +1,22 @@
-united CMS
-==========
+unite cms
+=========
 
-[![Build Status](https://travis-ci.org/united-cms/standard.svg?branch=master)](https://travis-ci.org/united-cms/standard)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/f9a5c1be2b2d9e787e68/test_coverage)](https://codeclimate.com/github/united-cms/standard/test_coverage)
+[![Build Status](https://travis-ci.org/unite-cms/standard.svg?branch=master)](https://travis-ci.org/unite-cms/standard)
 
-united CMS is a content management platform that allows you to manage all kind of content in a datacentred way by using 
-an intuitv and simple Userinterface.
+unite cms is a decoupled content management system that allows you to manage all kind of content in a datacentred way by using an intuitv and simple userinterface.
 
 Developers can access the content via a graphQL API to build all kind of websites, apps or IoT applications.   
 
 
 ## Installation
 
-With a single united CMS installation you can manage multiple separated units called *"Organizations"* which don't 
-share any information with each other. 
+With a single unite cms installation you can manage multiple separated units called *"Organizations"* which don't share any information with each other. 
 
-At the moment united CMS is based on the Symfony 4.0 and  only requires PHP >= 7.1 and a MySQL >= 5.7.9 database.
+At the moment unite cms is based on the Symfony 4.0 and only requires PHP >= 7.1 and a MySQL >= 5.7.9 database.
 
 ### Start a new project 
 
-    composer create-project united-cms/standard u --stability dev
+    composer create-project unite-cms/standard u --stability dev
     
     bin/console assets:install --symlink
     
@@ -37,7 +34,7 @@ If you want to use the PHP development server execute:
 
     bin/console serve:run
 
-To run united content in production mode, execute:
+To run unite cms content in production mode, execute:
 
     bin/console assets:install
     bin/console doctrine:schema:update --force --env=prod
@@ -45,7 +42,7 @@ To run united content in production mode, execute:
 
 ## Testing
 
-united CMS and all it's bundles uses unit and functional tests by using the PHPUnit framework. To run integration tests, 
+unite cms and all it's bundles uses unit and functional tests by using the PHPUnit framework. To run integration tests, 
 execute: 
 
     phpunit
@@ -56,11 +53,11 @@ can get a much faster response if you run this group at the end.
     phpunit --exclude-group slow
     phpunit --group slow 
 
-Tests for each bundle can be executed from the root directory of each united CMS core bundle.
+Tests for each bundle can be executed from the root directory of each unite cms core bundle.
 
 ## Architecture
 
-united CMS is divided into organizations. This organizations do not share any information and 
+unite cms is divided into organizations. This organizations do not share any information and 
 allow different groups (for example different agencies) to use the same installation for managing their content.
 
 Each organization can have members and domains. Organization members can be invited into a domain, Different domains in 
@@ -82,7 +79,7 @@ types like single text field or more complex document reference fields.
 
 ### FieldTypes and CollectionTypes
 
-unitedCMS includes a basic set of FieldTypes (text field, email field, etc) and CollectionTypes (list, sorted list, 
+unite cms includes a basic set of FieldTypes (text field, email field, etc) and CollectionTypes (list, sorted list, 
 media grid, etc) for handling common use cases. This core set will be extend over time. Furthermore, developers can 
 provide their own types by creating a Symfony bundle that includes their types: 
 
@@ -115,8 +112,8 @@ and register them as a service:
             tags: [united_cms.collection_type]
 
 
-### united CMS graphQL API
-To get content out of united CMS developers can consume the graphQL API at: 
+### unite CMS graphQL API
+To get content out of unite CMS developers can consume the graphQL API at: 
 
     https://yourdomain.com/{organization}/{domain}/api
 
@@ -126,18 +123,18 @@ Or if you are using the subdomain-approach:
 
 You can find a full API reference in the file [API.md](API.md)   
 
-### united CMS Core API
+### unite CMS Core API
 
-Internally, united CMS is based on the Symfony Framework and provides the following services that should be used when 
+Internally, unite CMS is based on the Symfony Framework and provides the following services that should be used when 
 developing core or extension functionality: 
 
-* **united.cms.core_manager:** You can get the current organization and domain from this service, based on request 
+* **unite.cms.core_manager:** You can get the current organization and domain from this service, based on request 
 information (like the path).
-* **united.cms.field_type_manager:** You can get all registered field types from this service and validate field 
+* **unite.cms.field_type_manager:** You can get all registered field types from this service and validate field 
 settings and field data.
-* **united.cms.collection_type_manager:** You can get all registered collection types from this service.
-* **united.cms.domain_definition_parse:** Parses and serializes a domain object. This service is used to create a 
+* **unite.cms.collection_type_manager:** You can get all registered collection types from this service.
+* **unite.cms.domain_definition_parse:** Parses and serializes a domain object. This service is used to create a 
 domain object from the JSON definition.
-* **united.cms.fieldable_form_builder:** The fieldable form builder allows you to build content and setting forms based 
+* **unite.cms.fieldable_form_builder:** The fieldable form builder allows you to build content and setting forms based 
 on the defined contentType / settingType fields.  
   
