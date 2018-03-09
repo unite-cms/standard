@@ -9,7 +9,8 @@ This is just the standard configuration of unite cms. **Please see [github.com/u
 
     composer create-project unite-cms/standard u --stability dev
 
-    # Now set database configuration using environment variables or .env file 
+    # Now set configuration using environment variables or .env file. See 
+    .env.dist for a list of all required environment parameters.
     
     bin/console doctrine:schema:update --force
 
