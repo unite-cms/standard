@@ -7,7 +7,7 @@ This is just the standard configuration of unite cms. **Please see [github.com/u
 
 ## Start a new project 
 
-    composer create-project unite-cms/standard u --stability dev
+    composer create-project unite-cms/standard unitecms --stability dev
 
     # Now create the databse schema.
     bin/console doctrine:schema:update --force
