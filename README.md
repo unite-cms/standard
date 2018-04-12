@@ -9,9 +9,7 @@ This is just the standard configuration of unite cms. **Please see [github.com/u
 
     composer create-project unite-cms/standard u --stability dev
 
-    # Now set configuration using environment variables or .env file. See 
-    .env.dist for a list of all required environment parameters.
-    
+    # Now create the databse schema.
     bin/console doctrine:schema:update --force
 
 To get started create your first organization and a platform admin user:
@@ -26,6 +24,6 @@ If you want to use the PHP development server execute:
 
 To run unite cms content in production mode, execute:
 
-    bin/console assets:install
+    bin/console assets:install --env=prod
     bin/console doctrine:schema:update --force --env=prod
     bin/console cache:clear --env=prod    
