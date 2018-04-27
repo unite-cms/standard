@@ -23,12 +23,13 @@
         }
     },
     "require": {
-        "sroze/companienv": "~0",
         "unite-cms/core-bundle": "0@dev",
         "unite-cms/collection-field-bundle": "0@dev",
-        "unite-cms/storage-bundle": "0@dev"
+        "unite-cms/storage-bundle": "0@dev",
+        "unite-cms/wysiwyg-field-bundle": "0@dev"
     },
     "require-dev": {
+        "sroze/companienv": "~0",
         "symfony/thanks": "^1.0"
     },
     "scripts": {
