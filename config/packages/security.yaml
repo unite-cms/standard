@@ -42,7 +42,7 @@ security:
                 login_path: unitecms_core_authentication_login
                 check_path: unitecms_core_authentication_login
             logout:
-                path:   /logout
+                path:   /profile/logout
                 target: /
             remember_me:
                 secret:   '%env(APP_SECRET)%'
@@ -51,7 +51,7 @@ security:
 
     access_control:
         - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/profile/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/profile/reset-password, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/profile/reset-password-confirm, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/profile/accept-invitation, roles: IS_AUTHENTICATED_ANONYMOUSLY }
