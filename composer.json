@@ -23,10 +23,10 @@
         }
     },
     "require": {
-        "unite-cms/core-bundle": "0@dev",
-        "unite-cms/collection-field-bundle": "0@dev",
-        "unite-cms/storage-bundle": "0@dev",
-        "unite-cms/wysiwyg-field-bundle": "0@dev"
+        "unite-cms/core-bundle": "^0.5",
+        "unite-cms/collection-field-bundle": "^0.5",
+        "unite-cms/storage-bundle": "^0.5",
+        "unite-cms/wysiwyg-field-bundle": "^0.5"
     },
     "require-dev": {
         "sroze/companienv": "~0",
