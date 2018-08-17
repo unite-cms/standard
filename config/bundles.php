@@ -21,6 +21,7 @@ return [
     UniteCMS\CollectionFieldBundle\UniteCMSCollectionFieldBundle::class => ['all' => true],
     UniteCMS\StorageBundle\UniteCMSStorageBundle::class => ['all' => true],
     UniteCMS\WysiwygFieldBundle\UniteCMSWysiwygFieldBundle::class => ['all' => true],
+    UniteCMS\VariantsFieldBundle\UniteCMSVariantsFieldBundle::class => ['all' => true],
 
     # Dev and Test bundles
     Symfony\Bundle\DebugBundle\DebugBundle::class => ['dev' => true, 'test' => true],
